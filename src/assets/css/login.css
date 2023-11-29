@@ -1,0 +1,71 @@
+.loginContainer{
+    width: 60%;
+    padding:80px;
+    text-align:center;
+    background-color:#fafafa;
+    border-radius:15px;
+    box-shadow: 0 0 4px 0 rgba(0,0,0,0.15),
+                0 0 15px 0 rgba(0,0,0,0.09);   
+    margin-bottom:15px;   
+    position:relative;                      
+}
+.errorbox{
+    position:absolute;
+    width: 300px;
+    padding:20px;
+    background:rgb(232, 78, 78);
+    color:#fff;
+    z-index:2;
+    top:240px;
+    left:120px;
+}
+.errorbox>div{
+    top:5px;
+    right:10px;
+    cursor:pointer;
+}
+.logo{
+    width: 100px;
+    height:100px;
+    background-size:cover;
+    background-repeat: no-repeat;
+    margin-left:auto;
+    margin-right:auto;
+}
+.loginForm{
+    padding-left:50px;
+    padding-right:50px;
+}
+.input{
+    width: 100%;
+    padding:10px;
+    border-radius:15px;
+    border: 1px solid #ccc;
+    background-color:#efefef;
+    display:block;
+    margin-bottom:10px;
+}
+.button{
+    width: 100%;
+    padding:10px;
+    border-radius:15px;
+    border:none;
+    color:#fff;
+    background-color:rgb(4, 159, 225);
+}
+.filebox{
+    width: 100%;
+    padding:5px 20px;
+    text-align:left;
+    border-radius:15px;
+    border: 1px solid #ccc;
+    background-color:#efefef;
+    margin-bottom:10px;
+    overflow:hidden;
+}
+.logo>img{
+    object-fit: cover;
+    object-position: center;
+    width: 100px;
+    height:100px;
+}
