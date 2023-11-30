@@ -1,0 +1,44 @@
+.header{
+    position: absolute;
+    width: 100%;
+    top:0;
+    left:0;
+    height:60px;
+    border-bottom: 1px solid #ddd;
+    background: #61a9fd;
+    color:#fff;
+    line-height: 60px;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+.userinfo{
+    display: flex;
+    width:50%;
+}
+.usericon{
+    width:40px;
+    height:40px;
+    border-radius: 50%;
+    overflow:hidden;
+    margin-top: 10px;
+    margin-right: 10px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+.usericon img{
+    width:40px;
+    height:40px;
+    object-fit: cover;
+}
+.logout{
+    height:40px;
+    margin-top: 10px;
+}
+.lobby-box{
+    height: 100%;
+    padding-top: 30px;
+}

@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import './assets/css/index.css'
-import { onAuthStateChanged } from 'firebase/auth'
+import { onAuthStateChanged, signOut } from 'firebase/auth'
 import { auth } from './config/firebase'
 
+import { AuthProvider } from './context/AuthProvider'
 import Login from './pages/Login'
 import ChatLobby from './pages/ChatLobby'
 import Registera from './pages/Registera'
@@ -11,12 +12,18 @@ import Registerb from './pages/Registerb'
 
 const App = () => {
   const [isLogged, setIsLogged] = useState(false);
+  const [email, setEmail] = useState();
+  const [nick, setNick] = useState();
+  const [uicon, setUicon] = useState();
 
   const waitForAuthChange = () => {
     return new Promise(resolve => {
       const unsub = onAuthStateChanged(auth, (user) => {
         if (user) {
           setIsLogged(true);
+          setEmail(user.email);
+          setNick(user.displayName);
+          setUicon(user.photoURL);
           resolve(); //사용자 인증이 성공하면 Promise를 해결
         }
       });
@@ -28,9 +35,9 @@ const App = () => {
   const handleAuthChange = async () => {
     try {
       await waitForAuthChange();
-      console.log("사용자가 인증되었음묘!");
+      console.log("사용자가 인증되었음!");
     } catch (error) {
-      console.error("인증상태 변경 중 오류 났씀묘!", error);
+      console.error("인증상태 변경 중 오류 남!", error);
     }
   }
 
@@ -42,17 +49,20 @@ const App = () => {
     <Router>
       <div className="container">
         <div className='container-in'>
-          <Routes>
-            {
-              isLogged ? (
-                <Route exact path="/" element={<ChatLobby />} />
-              ) : (
-                <Route exact path="/" element={<Login />} />
-              )
-            }
-            <Route path="/join" element={<Registera />} />
-            <Route path="/joinend" element={<Registerb />} />
-          </Routes>
+          <AuthProvider value={{ email, nick, uicon }} >
+            <Routes>
+              {
+                isLogged ? (
+                  <Route exact path="/" element={<ChatLobby />} />
+                ) : (
+                  <Route exact path="/" element={<Login />} />
+                )
+              }
+              <Route path="/login" element={<Login />} />
+              <Route path="/join" element={<Registera />} />
+              <Route path="/joinend" element={<Registerb />} />
+            </Routes>
+          </AuthProvider>
         </div>
       </div>
     </Router>
