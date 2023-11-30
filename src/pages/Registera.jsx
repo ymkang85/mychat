@@ -84,10 +84,33 @@ const Registera = () => {
             <h1 className="text-center">MyChat 회원가입</h1>
             <p>1단계 : 이메일, 비밀번호 등록</p>
             <form className="loginForm">
-               <InputType types="text" names="email" values={formValues.email} placeholders="이메일" classNames="input" functions={handleChanges} />
-               <InputType types="password" names="pass" values={formValues.pass} placeholders="비밀번호" classNames="input" functions={handleChanges} />
-               <InputType types="password" names="repass" values={formValues.repass} placeholders="비밀번호확인" classNames="input" functions={handleChanges} />
-               <ButtonType types="submit" classNames="button" styles={{ backgroundColor: "green" }} functions={handleSubmit} text="다음단계" />
+               <InputType types="text"
+                  names="email"
+                  values={formValues.email}
+                  placeholders="이메일"
+                  classNames="input"
+                  functions={handleChanges}
+               />
+               <InputType types="password"
+                  names="pass"
+                  values={formValues.pass}
+                  placeholders="비밀번호"
+                  classNames="input"
+                  functions={handleChanges}
+               />
+               <InputType types="password"
+                  names="repass"
+                  values={formValues.repass}
+                  placeholders="비밀번호확인"
+                  classNames="input"
+                  functions={handleChanges}
+               />
+               <ButtonType types="submit"
+                  classNames="button"
+                  styles={{ backgroundColor: "green" }}
+                  functions={handleSubmit}
+                  text="다음단계"
+               />
             </form>
          </div>
          <Link to="/">회원로그인</Link>

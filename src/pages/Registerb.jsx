@@ -30,20 +30,21 @@ const Registerb = () => {
       })
    }
 
+   //파일확장자 추출함수
+   const extExt = (filename) => {
+      //마지막에 있는 점의 위치
+      const lastDot = filename.lastIndexOf(".");
+      //subString 함수로 마지막 부분만 추출 , 모두 소문자로 변환
+      return filename.substring(lastDot, filename.length).toLowerCase();
+   }
+
    const imgChange = (e) => {
       const newIcon = e.target.files[0];
       encodeFileToBase64(newIcon);
       setUserIcon(newIcon);
       setFileName(newIcon.name);
       setUserImg(e.target.files[0]);
-   }
-
-   // 파일 확장자 추출 함수
-   const extExt = (filename) => {
-      //마지막에 있는 점의 위치
-      const lastDot = filename.lastIndexOf(".");
-      //subString 함수로 마지막 부분만 추출, 모두 소문자로 변환
-      return fileName.substring(lastDot, filename.length).toLowerCase();
+      console.log(extExt(fileName));
    }
 
    const onPress = async (e) => {
@@ -51,24 +52,24 @@ const Registerb = () => {
       let photoURL = '';
       if (fileName !== null) {
          try {
-            // 확장자 추출
+            //확장자 추출
             const fileExt = extExt(fileName);
             const imgRef = ref(storage, `userdata/${v4()}${fileExt}`);
             await uploadBytes(imgRef, userImg);
             photoURL = await getDownloadURL(imgRef);
          } catch (err) {
-            console.error("Error image upload : ", err);
+            console.error('Error image upload :', err);
          }
-      }
+      } //if
       try {
          await updateProfile(
-            auth.currentUser, {
-               displayName : nick,
-               photoURL
-            }
+            user, {
+            displayName: nick,
+            photoURL
+         }
          )
       } catch (err) {
-         console.error('Error user update profile : ', err);
+         console.error('Error user update profile :', err);
       }
       navigate('/');
    }
@@ -89,8 +90,14 @@ const Registerb = () => {
             </div>
             <h1 className="text-center">MyChat 회원가입</h1>
             <p>2단계 : 닉네임(필수), 이미지아이콘(선택) 등록</p>
-            <form className="loginForm" method='post'>
-               <InputType types="text" names="nick" values={nick} placeholders="닉네임" classNames="input" functions={(e) => setNick(e.target.value)} />
+            <form className="loginForm" method="post">
+               <InputType types="text"
+                  names="nick"
+                  values={nick}
+                  placeholders="닉네임"
+                  classNames="input"
+                  functions={(e) => setNick(e.target.value)}
+               />
                <div className="filebox">
                   <input type="file" hidden id="myfile" onInput={imgChange} />
                   <label htmlFor="myfile"
@@ -106,7 +113,12 @@ const Registerb = () => {
                   >이미지선택</label>
                   {fileName}
                </div>
-               <ButtonType types="submit" classNames="button" styles={{ backgroundColor: "green" }} functions={onPress} text="회원가입완료" />
+               <ButtonType types="submit"
+                  classNames="button"
+                  styles={{ backgroundColor: "green" }}
+                  functions={onPress}
+                  text="회원가입완료"
+               />
             </form>
          </div>
          <Link to="/">회원로그인</Link>
