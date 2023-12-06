@@ -10,8 +10,8 @@ const AuthProvider = ({ children, value }) => {
     )
 }
 
-const useAuthValue= () =>{
+const useAuthValue = () => {
     return useContext(AuthContext);
 }
 
-export { AuthProvider, useAuthValue} 
+export { AuthProvider, useAuthValue }

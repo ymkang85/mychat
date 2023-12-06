@@ -49,25 +49,9 @@ const Login = () => {
         <div className="logo" style={{ backgroundImage: `url(${logo})` }}></div>
         <h1 className="text-center">MyChat Login</h1>
         <form className="loginForm" method="post">
-          <InputType types="text"
-            names="useremail"
-            values={useremail}
-            placeholders="이메일"
-            classNames="input"
-            functions={(e) => setUseremail(e.target.value)}
-          />
-          <InputType types="password"
-            names="userpass"
-            values={userpass}
-            placeholders="비밀번호"
-            classNames="input"
-            functions={(e) => setUserpass(e.target.value)}
-          />
-          <ButtonType types="submit"
-            classNames="button"
-            functions={onPress}
-            text="로그인"
-          />
+          <InputType types="text" names="useremail" values={useremail} placeholders="이메일" classNames="input" functions={(e) => setUseremail(e.target.value)} />
+          <InputType types="password" names="userpass" values={userpass} placeholders="비밀번호" classNames="input" functions={(e) => setUserpass(e.target.value)} />
+          <ButtonType types="submit" classNames="button" functions={onPress} text="로그인" />
         </form>
         <img src={googleLogin} alt="구글로그인" className="google-login" />
       </div>

@@ -37,7 +37,7 @@ const App = () => {
       await waitForAuthChange();
       console.log("사용자가 인증되었음!");
     } catch (error) {
-      console.error("인증상태 변경 중 오류 남!", error);
+      console.error("인증상태 변경 중 오류!", error);
     }
   }
 
@@ -49,7 +49,7 @@ const App = () => {
     <Router>
       <div className="container">
         <div className='container-in'>
-          <AuthProvider value={{ email, nick, uicon }} >
+          <AuthProvider value={{ email, nick, uicon }}>
             <Routes>
               {
                 isLogged ? (
